@@ -1,0 +1,48 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "evosuite-core"
+version = "0.2.0"
+description = "EvoSuite Core Runtime: orchestration engine, sampling, config, contracts"
+authors = [{name = "EvoSuite Team"}]
+license = {text = "MIT"}
+requires-python = ">=3.10"
+dependencies = [
+    "pydantic>=2.0",
+    "pyyaml",
+    "click",
+    "httpx"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov",
+    "black",
+    "isort",
+    "flake8",
+    "mypy",
+    "pre-commit"
+]
+
+[project.scripts]
+evosuite = "evosuite.cli:main"
+
+[project.entry-points."evosuite.plugins"]
+# Core plugins can be registered here
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+
+[tool.black]
+line-length = 88
+target-version = ['py310']
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
