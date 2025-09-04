@@ -33,6 +33,9 @@ evosuite = "evosuite.cli:main"
 [project.entry-points."evosuite.plugins"]
 # Core plugins can be registered here
 
+[tool.hatch.build.targets.wheel]
+packages = ["src/evosuite"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 python_files = ["test_*.py"]
